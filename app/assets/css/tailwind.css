@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Paleta Almond (usada no login) ===== */
+:root {
+    --almond-espresso: #4a3526;      /* botão / acentos escuros */
+    --almond-espresso-600: #3d2a1e;
+    --almond-foam: #c3a27d;          /* caramelo/dourado */
+    --almond-cream: #faf6f2;         /* fundo claro principal */
+    --almond-silk: #f3ece6;          /* painéis e seções */
+    --almond-border: #e6ddd5;        /* bordas sutis */
+    --almond-muted: #7a6f67;         /* texto secundário */
+    --almond-ink: #1f1b18;           /* texto principal */
+
+    /* Texto sobre bg brancos */
+    --onw-text:  #1f1b18; /* principal, alto contraste */
+    --onw-muted: #5a4f46; /* secundário */
+    --onw-link:  #4a3526; /* links */
+    --onw-border:#e6ddd5; /* divisores */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --almond-espresso: #d7b48e;
+        --almond-espresso-600: #c59f76;
+        --almond-foam: #e6c6a1;
+        --almond-cream: #0f0d0c;
+        --almond-silk: #151311;
+        --almond-border: #2a2420;
+        --almond-muted: #a99f96;
+        --almond-ink: #f5efe9;
+    }
+}
+
+/* ===== Resets e base ===== */
+@layer base {
+    html, body, #__nuxt {
+        height: 100%;
+    }
+    body {
+        @apply antialiased;
+        background: var(--almond-cream);
+        color: var(--almond-ink);
+    }
+    a {
+        color: var(--almond-espresso);
+    }
+    ::selection {
+        background: var(--almond-foam);
+        color: white;
+    }
+}
+
+/* ===== Componentes utilitários (opcionais) ===== */
+@layer components {
+    .text-onw   { color: var(--onw-text); }
+    .muted-onw  { color: var(--onw-muted); }
+    .link-onw   { color: var(--onw-link); }
+    .divider-onw{ border-color: var(--onw-border); }
+
+    .card {
+        @apply rounded-2xl bg-white/70 backdrop-blur-sm border shadow;
+        border-color: var(--almond-border);
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium transition shadow-sm;
+    }
+    .btn-primary {
+        @apply btn text-white;
+        background: var(--almond-espresso);
+    }
+    .btn-primary:hover {
+        background: var(--almond-espresso-600);
+    }
+    .btn-outline {
+        @apply btn border;
+        border-color: var(--almond-border);
+        color: var(--almond-ink);
+        background: transparent;
+    }
+    .btn-outline:hover {
+        background: var(--almond-silk);
+    }
+
+    .input {
+        @apply w-full rounded-xl px-4 py-3 outline-none border bg-white/80;
+        border-color: var(--almond-border);
+    }
+    .input:focus {
+        box-shadow: 0 0 0 3px color-mix(in oklab, var(--almond-foam) 35%, transparent);
+        border-color: var(--almond-foam);
+    }
+
+    .label {
+        @apply block text-sm mb-1;
+    }
+
+    .muted {
+        color: var(--almond-muted);
+    }
+
+    .container-p {
+        @apply px-4 sm:px-6 lg:px-8;
+    }
+}
+
+/* ===== Helpers extras ===== */
+@layer utilities {
+    .bg-cream { background: var(--almond-cream); }
+    .bg-silk { background: var(--almond-silk); }
+    .text-ink { color: var(--almond-ink); }
+    .text-muted { color: var(--almond-muted); }
+    .ring-foam { box-shadow: 0 0 0 3px color-mix(in oklab, var(--almond-foam) 35%, transparent); }
+}
